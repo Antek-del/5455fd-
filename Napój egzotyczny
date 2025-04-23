@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Błąd 404 - Napój Marzeń</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #fff0f0;
+        }
+        h1 {
+            color: crimson;
+            font-size: 52px;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            background-color: darkred;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            margin-top: 30px;
+            display: none; /* Ukrywamy przycisk początkowo */
+        }
+        button:hover {
+            background-color: firebrick;
+        }
+        #insultText {
+            display: none;
+            font-size: 24px;
+            margin-top: 30px;
+            color: darkred;
+            font-weight: bold;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>404 - Strona nie została znaleziona</h1>
+    <button onclick="showRandomInsult()">Pokaż prawdę...</button>
+    <p id="insultText"></p>
+
+    <script>
+        const insults = [
+            "Chciałbyś ten napój, ale jesteś tylko pustym dnem najgorszego bloku! Twoje marzenia to jedynie nierealne wypłaty z budżetu idiotyzmu!",
+            "Napój? Ty pijesz tylko porażki własnego życia, leżysz jak kawałek marniejszego plastiku z wczorajszego śmietnika, ty zgubiona owco!",
+            "Chciałbyś ten napój, ale nie masz żadnej przyszłości poza... przyszłością nikogo! Twój mózg to rynsztok zamknięty na klucz!",
+            "Ty chcesz napój? Może napój z łez rozczarowania, które płyną po zapałkach twojego życia, ty zapomniany kawałku drewna w pociągu do nikąd!",
+            "Twoje marzenia o napoju są jak obietnice polityków – pustą gadaniną, której nie da się wziąć na poważnie, ty malutka zgnilizno intelektualna!",
+            "Żałosne! Twoje marzenia to jak musztarda bez smaku – każdy wie, że jest beznadziejna, ale próbujesz ją sprzedać, jakby była złotem!",
+            "Napój? Zamiast napoju, powinieneś wypić kubek ośmieszonych nadziei i podjętych porażek, które krążą w Twojej głowie!",
+            "Kiedy patrzę na ciebie, widzę tylko dziurę w rzeczywistości, a napój marzeń to tylko kolejny fałszywy obiekt twojego oszukańczego pragnienia!",
+            "Napój? A może napój w kształcie samego siebie – nic nie warty, zagubiony, niepotrzebny, w pełni niezrozumiany, tak jak twoje aspiracje!",
+            "Chciałeś napój? Napój? To jak poprosić o cud, którego się nie zasługuje. Zajmij się raczej rozwiązywaniem własnych zmartwień, nie marzeń!",
+            "Twój napój? Twoje marzenia o napoju są niczym niekończąca się fala uderzająca w głaz twojej porażki – dno, jak zawsze!",
+            "Twój napój to tylko iluzja, Twoje pragnienia to martwe liście opadające na ziemię. Napój nie przyjdzie, bo twoje serce zostało wyssane przez porażki!",
+            "A może napój z rzeczy, które przez ciebie odpadły w życiu? Podaj rękę porażkom, które chcesz sprzedać światu, bo napój to już za dużo!",
+            "Napój marzeń? Ty nie zasługujesz nawet na wodę z kranu. Idź lepiej szukać prawdy w pustym kubku, bo to i tak twój jedyny możliwy napój!",
+            "Kiedy patrzę na ciebie, widzę jedynie chaos i zmarnowane szanse, więc napój marzeń – zapomnij o nim! To nie twoja rzeczywistość!"
+        ];
+
+        let clickCount = 0;
+
+        // Funkcja pokazująca przycisk po 5 sekundach
+        window.onload = function() {
+            setTimeout(function() {
+                const button = document.querySelector("button");
+                button.style.display = "inline-block"; // Pokazujemy przycisk
+            }, 5000);
+        }
+
+        function showRandomInsult() {
+            clickCount++;
+            const insultText = document.getElementById("insultText");
+
+            if (clickCount < 3) {
+                const random = Math.floor(Math.random() * insults.length);
+                insultText.textContent = insults[random];
+                insultText.style.display = "block";
+
+                // Po 5 sekundach ukryj tekst
+                setTimeout(function() {
+                    insultText.style.display = "none";
+                }, 5000);
+            } else {
+                insultText.textContent = "Zbyt dużo kliknięć. Pożegnaj się ze swoją szansą na ten napój i idź do domu, ty płaskostopie!";
+                insultText.style.display = "block";
+                setTimeout(function() {
+                    window.location.href = "about:blank";
+                }, 3000);
+            }
+        }
+    </script>
+</body>
+</html>
